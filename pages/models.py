@@ -22,7 +22,7 @@ class Page(mixins.TranslatedMixin):
     '''Page object used to represent object's position inside a site objects
     hierarhy, activity state and can contains translation
     '''
-    is_default = models.BooleanField(_('is default page'), default=False)
+    is_default = models.BooleanField(_('is default page'), default=False, db_index=True)
 
     class Meta:
         verbose_name = _('page')
@@ -32,12 +32,13 @@ class Page(mixins.TranslatedMixin):
         '''Get string representation based on current locale: get translation
         title.
         '''
+
+        str_value = 'Page object'
         try:
             str_value = self.get_translation().__str__()
         except PageTranslation.DoesNotExist:
-            str_value = 'Page object'
-        finally:
-            return str_value
+            pass
+        return str_value
 
     def __unicode__(self):
         '''Get unicode of current locale translation's title for this page

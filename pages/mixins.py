@@ -83,7 +83,7 @@ class NavigationMixin(models.Model):
         header - content for h1 tag reprenenting the page and menu <a> tag text
         title - menu tag <a> title attribute
     '''
-    alias = models.SlugField(verbose_name=_('alias'), unique=False,
+    alias = models.SlugField(verbose_name=_('alias'), unique=True,
                              help_text=_('URL string alias (slug)'))
     header = models.CharField(max_length=255, verbose_name=_('header'),
                               blank=True, help_text=_('H1 page tag'))
@@ -107,7 +107,7 @@ class TranslatedMixin(models.Model):
         class ArticleTranslation(TranslationMixin, models.Model):
             title = models.CharField(max_length=255)
             content = models.TextField()
-            article = models.ForeignKey(Article, elated_name='translations')
+            article = models.ForeignKey(Article, related_name='translations')
 
     We can get translation:
 
