@@ -125,7 +125,8 @@ class Placeholder(models.Model):
 
 
 class PageTranslation(mixins.ActivityMixin, mixins.HTMLMetaMixin,
-                      mixins.NavigationMixin, mixins.TranslationMixin):
+                      mixins.NavigationMixin, mixins.TranslationMixin,
+                      mixins.AltURLMixin):
     '''Represent page translation for current language
     '''
     page = models.ForeignKey(Page, related_name='translations',

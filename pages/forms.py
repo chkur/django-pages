@@ -69,7 +69,7 @@ class PageTranslationForm(forms.ModelForm):
         return translation
 
     FIELD_GROUPS = (
-        ('title_tag', 'layout', 'alias', ),
+        ('title_tag', 'layout', 'alias', 'alt_url'),
         ('header', 'title', 'is_active', ),
         ('meta_description', 'meta_keywords', )
     )

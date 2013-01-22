@@ -14,8 +14,13 @@ def get_page_data(request, slug=None):
     template_name = page.layout.template
     articles = models.PageArticle.objects.filter(page=page,
                             layout=page.layout).select_related('place_alias')
+    try:
+        alt_url = page.alt_url
+    except:
+        alt_url = None
+    print alt_url
     blocks = {article.place.alias: article for article in articles}
-    return template_name, {'page': page, 'blocks': blocks}
+    return template_name, {'page': page, 'blocks': blocks, 'alt_url': alt_url}
 
 
 def page_view(request, slug=None):

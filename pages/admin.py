@@ -107,7 +107,7 @@ class PageAdmin(admin.ModelAdmin):
     search_fields = ('translations__header', 'translations__title',
                      'translations__alias', )
     list_filter = ('translations__layout', )
-    list_display = ('title', 'alias', 'layout', )
+    list_display = ('title', 'alias', 'layout')
 
     def title(self, obj):
         '''Get title

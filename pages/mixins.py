@@ -137,3 +137,14 @@ class TranslationMixin(models.Model):
 
     class Meta:
         abstract = True
+
+
+class AltURLMixin(models.Model):
+    '''Mixin contains field related to url with alt language.
+    '''
+    alt_url = models.CharField(max_length=255,
+                               verbose_name=_('alternative url'),
+                               default='/')
+
+    class Meta:
+        abstract = True
